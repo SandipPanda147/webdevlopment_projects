@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="COSMOS - An interactive space explorer powered by real NASA imagery. Explore planets, moons, stars, galaxies, black holes and human space exploration.">
+
+    <meta name="theme-color" content="#02030a">
+
+    <title>COSMOS | Interactive Space Explorer</title>
+
+    <link rel="preconnect" href="https://images-api.nasa.gov">
+    <link rel="preconnect" href="https://images-assets.nasa.gov">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         SPACE BACKGROUND
+         ========================================= -->
+
+    <div class="space-background">
+        <div class="stars stars-one"></div>
+        <div class="stars stars-two"></div>
+        <div class="stars stars-three"></div>
+    </div>
+
+
+    <!-- =========================================
+         NAVIGATION
+         ========================================= -->
+
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            <span>✦</span>
+            COSMOS
+        </a>
+
+        <nav id="navMenu">
+
+            <a href="#home">Home</a>
+            <a href="#explore">Explore</a>
+            <a href="#blackhole">Black Hole</a>
+            <a href="#astronauts">Humans in Space</a>
+            <a href="#about">About</a>
+
+        </nav>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================================
+             HERO
+             ========================================= -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    NASA-POWERED SPACE EXPLORATION
+                </p>
+
+                <h1>
+                    Explore the
+                    <span>Universe.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover real worlds, distant galaxies, mysterious
+                    black holes and the humans who dared to travel beyond Earth.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#explore" class="primary-btn">
+                        Explore Space
+                        <span>→</span>
+                    </a>
+
+                    <a href="#blackhole" class="secondary-btn">
+                        Enter the Unknown
+                    </a>
+
+                </div>
+
+                <div class="hero-note">
+                    <span class="pulse-dot"></span>
+                    Real NASA imagery • Interactive exploration
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="planet-orbit orbit-large">
+                    <div class="orbit-dot"></div>
+                </div>
+
+                <div class="planet-orbit orbit-small">
+                    <div class="orbit-dot"></div>
+                </div>
+
+                <div class="hero-earth">
+                    <div class="earth-image">
+                        <img
+                            id="heroEarth"
+                            src=""
+                            alt="Earth photographed from space"
+                            loading="eager">
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             QUICK STATS
+             ========================================= -->
+
+        <section class="quick-stats">
+
+            <div class="stat-box">
+                <strong>8</strong>
+                <span>Planets</span>
+            </div>
+
+            <div class="stat-box">
+                <strong>140+</strong>
+                <span>Known Moons</span>
+            </div>
+
+            <div class="stat-box">
+                <strong>∞</strong>
+                <span>Stars</span>
+            </div>
+
+            <div class="stat-box">
+                <strong>∞</strong>
+                <span>Galaxies</span>
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             EXPLORE
+             ========================================= -->
+
+        <section class="explore-section" id="explore">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    DISCOVER
+                </p>
+
+                <h2>
+                    Explore <span>Space</span>
+                </h2>
+
+                <p>
+                    Search the universe and discover real NASA imagery.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-container">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search Mars, Europa, Andromeda..."
+                    autocomplete="off">
+
+                <button id="clearSearch">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    data-category="all">
+                    All
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="planet">
+                    🪐 Planets
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="moon">
+                    🌙 Moons
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="star">
+                    ⭐ Stars
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="galaxy">
+                    🌌 Galaxies
+                </button>
+
+                <button
+                    class="filter"
+                    data-category="other">
+                    ☄️ Other
+                </button>
+
+            </div>
+
+
+            <!-- NASA STATUS -->
+
+            <div class="api-status" id="apiStatus">
+                <span class="status-dot"></span>
+                NASA image service ready
+            </div>
+
+
+            <!-- CARDS -->
+
+            <div
+                class="space-grid"
+                id="spaceGrid">
+            </div>
+
+
+            <div
+                class="no-results"
+                id="noResults">
+
+                <div>🌌</div>
+
+                <h3>
+                    Nothing found
+                </h3>
+
+                <p>
+                    Try searching for another cosmic object.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             BLACK HOLE EXPERIENCE
+             ========================================= -->
+
+        <section
+            class="blackhole-section"
+            id="blackhole">
+
+            <div class="blackhole-visual">
+
+                <div class="blackhole-space"></div>
+
+                <div class="accretion-disk">
+
+                    <div class="disk disk-one"></div>
+                    <div class="disk disk-two"></div>
+                    <div class="disk disk-three"></div>
+
+                </div>
+
+                <div class="event-horizon"></div>
+
+                <div class="blackhole-core"></div>
+
+                <div class="gravity-ring"></div>
+
+            </div>
+
+
+            <div class="blackhole-content">
+
+                <p class="eyebrow">
+                    BEYOND THE EVENT HORIZON
+                </p>
+
+                <h2>
+                    Enter the
+                    <span>Black Hole.</span>
+                </h2>
+
+                <p>
+                    A black hole is an object whose gravity is so intense
+                    that even light cannot escape once it crosses the
+                    event horizon.
+                </p>
+
+                <p>
+                    The glowing structure around it is an accretion disk:
+                    extremely hot matter orbiting and falling toward the
+                    black hole.
+                </p>
+
+                <div class="blackhole-facts">
+
+                    <div>
+                        <strong>01</strong>
+                        <span>Event Horizon</span>
+                    </div>
+
+                    <div>
+                        <strong>02</strong>
+                        <span>Accretion Disk</span>
+                    </div>
+
+                    <div>
+                        <strong>03</strong>
+                        <span>Extreme Gravity</span>
+                    </div>
+
+                </div>
+
+                <a
+                    href="https://science.nasa.gov/universe/black-holes/"
+                    target="_blank"
+                    rel="noopener"
+                    class="primary-btn">
+
+                    Learn from NASA →
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             NASA FEATURE
+             ========================================= -->
+
+        <section class="nasa-feature">
+
+            <div class="nasa-feature-image">
+
+                <img
+                    id="nasaFeatureImage"
+                    src=""
+                    alt="NASA space image"
+                    loading="lazy">
+
+            </div>
+
+            <div class="nasa-feature-content">
+
+                <p class="eyebrow">
+                    FROM NASA'S ARCHIVES
+                </p>
+
+                <h2>
+                    The Universe,
+                    <span>as seen by NASA.</span>
+                </h2>
+
+                <p>
+                    Every object you explore can be connected to real
+                    observations, spacecraft missions and scientific
+                    imagery from NASA's extensive image collection.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    id="randomNASA">
+
+                    Show Another Image →
+
+                </button>
+
+                <p
+                    class="image-credit"
+                    id="featureCredit">
+                    NASA
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HUMAN SPACE EXPLORATION
+             ========================================= -->
+
+        <section
+            class="astronaut-section"
+            id="astronauts">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    HUMANS BEYOND EARTH
+                </p>
+
+                <h2>
+                    India & the
+                    <span>Final Frontier</span>
+                </h2>
+
+                <p>
+                    Meet people connected to India's remarkable journey
+                    into human spaceflight.
+                </p>
+
+            </div>
+
+
+            <div class="astronaut-grid">
+
+
+                <!-- KALPANA -->
+
+                <article class="astronaut-card">
+
+                    <div class="astronaut-image">
+
+                        <img
+                            src="kalpanachawla img.jpg"
+                            alt="Kalpana Chawla"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');">
+
+                        <div class="fallback-person">
+                            KC
+                        </div>
+
+                    </div>
+
+                    <div class="astronaut-content">
+
+                        <span class="person-tag">
+                            NASA ASTRONAUT
+                        </span>
+
+                        <h3>
+                            Kalpana Chawla
+                        </h3>
+
+                        <p>
+                            Born in Karnal, India, Kalpana Chawla became
+                            the first woman of Indian origin to travel to
+                            space. She flew on STS-87 in 1997 and STS-107
+                            in 2003.
+                        </p>
+
+                        <div class="person-facts">
+
+                            <span>
+                                🇮🇳 India
+                            </span>
+
+                            <span>
+                                🚀 2 Missions
+                            </span>
+
+                            <span>
+                                ⏱ 30d 14h 54m
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- RAKESH -->
+
+                <article class="astronaut-card">
+
+                    <div class="astronaut-image">
+
+                        <img
+                            src="rakeshsharma img.jpg"
+                            alt="Rakesh Sharma"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');">
+
+                        <div class="fallback-person">
+                            RS
+                        </div>
+
+                    </div>
+
+                    <div class="astronaut-content">
+
+                        <span class="person-tag">
+                            FIRST INDIAN IN SPACE
+                        </span>
+
+                        <h3>
+                            Rakesh Sharma
+                        </h3>
+
+                        <p>
+                            Former Indian Air Force pilot Rakesh Sharma
+                            became the first Indian citizen to travel
+                            into space in 1984 aboard Soyuz T-11.
+                        </p>
+
+                        <div class="person-facts">
+
+                            <span>
+                                🇮🇳 India
+                            </span>
+
+                            <span>
+                                🚀 Soyuz T-11
+                            </span>
+
+                            <span>
+                                🛰 Salyut 7
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SHUBHANSHU -->
+
+                <article class="astronaut-card">
+
+                    <div class="astronaut-image">
+
+                        <img
+                            src="shubhanshushukla img"
+                            alt="Shubhanshu Shukla"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');">
+
+                        <div class="fallback-person">
+                            SS
+                        </div>
+
+                    </div>
+
+                    <div class="astronaut-content">
+
+                        <span class="person-tag">
+                            AX-4 MISSION
+                        </span>
+
+                        <h3>
+                            Shubhanshu Shukla
+                        </h3>
+
+                        <p>
+                            Indian Air Force Group Captain Shubhanshu
+                            Shukla became the second Indian citizen to
+                            travel to space, serving as pilot of Axiom
+                            Mission 4 to the International Space Station.
+                        </p>
+
+                        <div class="person-facts">
+
+                            <span>
+                                🇮🇳 India
+                            </span>
+
+                            <span>
+                                🚀 Ax-4
+                            </span>
+
+                            <span>
+                                🛰 ISS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SUNITA -->
+
+                <article class="astronaut-card">
+
+                    <div class="astronaut-image">
+
+                        <img
+                            src="Sunitawilliams img.jpg"
+                            alt="Sunita Williams"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');">
+
+                        <div class="fallback-person">
+                            SW
+                        </div>
+
+                    </div>
+
+                    <div class="astronaut-content">
+
+                        <span class="person-tag">
+                            INDIAN-AMERICAN ASTRONAUT
+                        </span>
+
+                        <h3>
+                            Sunita Williams
+                        </h3>
+
+                        <p>
+                            NASA astronaut Sunita Williams is of Indian
+                            heritage and completed three space missions,
+                            including long-duration expeditions aboard
+                            the International Space Station.
+                        </p>
+
+                        <div class="person-facts">
+
+                            <span>
+                                🇺🇸 USA
+                            </span>
+
+                            <span>
+                                🚀 3 Missions
+                            </span>
+
+                            <span>
+                                🛰 ISS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+                <!-- ANIL MENON -->
+
+<article class="astronaut-card">
+
+    <div class="astronaut-image">
+
+        <img
+            src="anilmenon img.jpg"
+            alt="NASA Astronaut Anil Menon"
+            loading="lazy"
+            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');"
+        >
+
+        <div class="fallback-person">
+            AM
+        </div>
+
+    </div>
+
+    <div class="astronaut-content">
+
+        <span class="person-tag">
+            NASA ASTRONAUT
+        </span>
+
+        <h3>
+            Anil Menon
+        </h3>
+
+        <p>
+            Dr. Anil Menon is a NASA astronaut, physician and
+            engineer of Indian heritage. Before joining NASA,
+            he served as SpaceX's first flight surgeon and helped
+            support human spaceflight missions.
+        </p>
+
+        <div class="person-facts">
+
+            <span>🇺🇸 USA</span>
+            <span>🚀 NASA Astronaut</span>
+            <span>🛰 ISS</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             EARTH SECTION
+             ========================================= -->
+
+        <section class="earth-section">
+
+            <div class="earth-section-content">
+
+                <p class="eyebrow">
+                    OUR HOME
+                </p>
+
+                <h2>
+                    Earth is not just
+                    <span>a planet.</span>
+                </h2>
+
+                <p>
+                    It is the only world we know of that supports life.
+                    From the deepest oceans to the highest atmosphere,
+                    Earth is a small world inside an enormous universe.
+                </p>
+
+                <div class="earth-facts">
+
+                    <div>
+                        <strong>12,742 km</strong>
+                        <span>Diameter</span>
+                    </div>
+
+                    <div>
+                        <strong>1</strong>
+                        <span>Natural Moon</span>
+                    </div>
+
+                    <div>
+                        <strong>4.54B</strong>
+                        <span>Years Old</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="earth-large">
+
+                <img
+                    id="earthSectionImage"
+                    src=""
+                    alt="Earth from space"
+                    loading="lazy">
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ABOUT
+             ========================================= -->
+
+        <section
+            class="about-section"
+            id="about">
+
+            <div>
+
+                <p class="eyebrow">
+                    ABOUT COSMOS
+                </p>
+
+                <h2>
+                    Curiosity is where
+                    <span>exploration begins.</span>
+                </h2>
+
+                <p>
+                    COSMOS is a web-development project designed to
+                    combine HTML, CSS and JavaScript with real-world
+                    space data and imagery.
+                </p>
+
+                <p>
+                    The project demonstrates dynamic searching,
+                    filtering, API integration, responsive design,
+                    animations, lazy loading and interactive UI.
+                </p>
+
+            </div>
+
+
+            <div class="technology-card">
+
+                <div>
+                    <span>01</span>
+                    <p>HTML5</p>
+                </div>
+
+                <div>
+                    <span>02</span>
+                    <p>CSS3</p>
+                </div>
+
+                <div>
+                    <span>03</span>
+                    <p>JavaScript</p>
+                </div>
+
+                <div>
+                    <span>04</span>
+                    <p>NASA API</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         DETAIL MODAL
+         ========================================= -->
+
+    <div
+        class="modal"
+        id="detailsModal"
+        role="dialog"
+        aria-modal="true">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+                aria-label="Close">
+                ×
+            </button>
+
+            <div id="modalBody"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ✦ COSMOS
+        </div>
+
+        <p>
+            Explore. Discover. Understand the Universe.
+        </p>
+
+        <div class="footer-links">
+
+            <a
+                href="https://www.nasa.gov/"
+                target="_blank"
+                rel="noopener">
+                NASA
+            </a>
+
+            <a
+                href="https://www.isro.gov.in/"
+                target="_blank"
+                rel="noopener">
+                ISRO
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © <span id="year"></span> COSMOS.
+            Web Development Final Project.
+        </p>
+
+    </footer>
+
+</body>
+</html>
