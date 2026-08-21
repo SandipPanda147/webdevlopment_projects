@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sandip Panda | Web Developer Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+        <nav class="navbar">
+
+            <h2 class="logo">Sandip<span>.</span></h2>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#todo">To-Do App</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO MY PORTFOLIO</p>
+
+            <h1>
+                Hi, I'm <span>Sandip Panda</span>
+            </h1>
+
+            <h2>MCA Student & Web Developer</h2>
+
+            <p>
+                I create responsive and interactive web applications
+                using HTML, CSS and JavaScript.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+            </div>
+
+        </div>
+
+        <div class="profile">
+            <div class="profile-circle">
+                SD
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="section">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-container">
+
+            <div class="about-text">
+
+                <h3>Who I Am</h3>
+
+                <p>
+                    I am an MCA student passionate about software
+                    development and web technologies. I enjoy creating
+                    responsive, user-friendly and interactive websites.
+                </p>
+
+                <p>
+                    This project demonstrates my knowledge of HTML,
+                    CSS and JavaScript through multiple interactive
+                    features.
+                </p>
+
+            </div>
+
+            <div class="skills">
+
+                <h3>My Skills</h3>
+
+                <div class="skill-list">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Java</span>
+                    <span>SQL</span>
+                    <span>Git</span>
+                    <span>Responsive Design</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects" class="section projects-section">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <div class="project-container">
+
+            <div class="project-card">
+
+                <div class="project-icon">📝</div>
+
+                <h3>To-Do List</h3>
+
+                <p>
+                    A task management application with localStorage
+                    support for saving tasks permanently.
+                </p>
+
+                <span>HTML • CSS • JavaScript</span>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">🛍️</div>
+
+                <h3>Product Listing</h3>
+
+                <p>
+                    An interactive product page that allows users
+                    to filter and sort products.
+                </p>
+
+                <span>JavaScript • Filter • Sort</span>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">💻</div>
+
+                <h3>Responsive Portfolio</h3>
+
+                <p>
+                    A responsive personal portfolio designed for
+                    mobile, tablet and desktop devices.
+                </p>
+
+                <span>HTML • CSS • JavaScript</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TODO APP ================= -->
+
+    <section id="todo" class="section">
+
+        <h2 class="section-title">To-Do List App</h2>
+
+        <p class="section-description">
+            Add your tasks below. Your tasks are automatically saved
+            in browser localStorage.
+        </p>
+
+        <div class="todo-container">
+
+            <div class="todo-input">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter a new task..."
+                >
+
+                <button id="addTaskBtn">
+                    Add Task
+                </button>
+
+            </div>
+
+            <div class="todo-info">
+
+                <span id="taskCount">
+                    0 tasks
+                </span>
+
+                <button id="clearCompleted">
+                    Clear Completed
+                </button>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section id="products" class="section product-section">
+
+        <h2 class="section-title">
+            Product Listing
+        </h2>
+
+        <p class="section-description">
+            Filter products by category and price or sort them
+            according to your preference.
+        </p>
+
+
+        <div class="filters">
+
+            <select id="categoryFilter">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Fashion">
+                    Fashion
+                </option>
+
+                <option value="Books">
+                    Books
+                </option>
+
+            </select>
+
+
+            <select id="priceFilter">
+
+                <option value="all">
+                    All Prices
+                </option>
+
+                <option value="under1000">
+                    Under ₹1,000
+                </option>
+
+                <option value="1000to5000">
+                    ₹1,000 - ₹5,000
+                </option>
+
+                <option value="5000to20000">
+                    ₹5,000 - ₹20,000
+                </option>
+
+                <option value="above20000">
+                    Above ₹20,000
+                </option>
+
+            </select>
+
+
+            <select id="sortFilter">
+
+                <option value="default">
+                    Sort By
+                </option>
+
+                <option value="priceLow">
+                    Price: Low to High
+                </option>
+
+                <option value="priceHigh">
+                    Price: High to Low
+                </option>
+
+                <option value="rating">
+                    Rating: High to Low
+                </option>
+
+                <option value="name">
+                    Name: A-Z
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <p id="productCount" class="product-count"></p>
+
+
+        <div
+            id="productContainer"
+            class="product-container">
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact" class="section">
+
+        <h2 class="section-title">
+            Contact Me
+        </h2>
+
+        <form id="contactForm" class="contact-form">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                id="message"
+                rows="6"
+                placeholder="Your Message"
+                required>
+            </textarea>
+
+            <button
+                type="submit"
+                class="btn">
+                Send Message
+            </button>
+
+        </form>
+
+        <p id="formMessage"></p>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Sandip Panda | Full Project Implementation
+        </p>
+
+        <p>
+            Built with HTML • CSS • JavaScript
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
